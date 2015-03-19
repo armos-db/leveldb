@@ -4,7 +4,7 @@
 
 #include <deque>
 
-#ifdef WIN32
+#ifdef _WIN32
 #include <windows.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -37,7 +37,7 @@
 #include "leveldb/env.h"
 #include "leveldb/slice.h"
 
-#ifdef WIN32
+#ifdef _WIN32
 #include "util/win_logger.h"
 #else
 #include "util/posix_logger.h"
@@ -143,7 +143,7 @@ class PosixRandomAccessFile: public RandomAccessFile {
   virtual Status Read(uint64_t offset, size_t n, Slice* result,
             char* scratch) const {
     Status s;
-#ifdef WIN32
+#ifdef _WIN32
     // no pread on Windows so we emulate it with a mutex
     boost::unique_lock<boost::mutex> lock(mu_);
 
@@ -267,7 +267,7 @@ class PosixEnv : public Env {
 
   virtual Status NewRandomAccessFile(const std::string& fname,
                    RandomAccessFile** result) {
-#ifdef WIN32
+#ifdef _WIN32
     int fd = _open(fname.c_str(), _O_RDONLY | _O_RANDOM | _O_BINARY);
 #else
     int fd = open(fname.c_str(), O_RDONLY);
@@ -449,7 +449,7 @@ class PosixEnv : public Env {
     return Status::OK();
   }
 
-#ifndef WIN32
+#ifndef _WIN32
   static uint64_t gettid() {
     pthread_t tid = pthread_self();
     uint64_t thread_id = 0;
@@ -464,7 +464,7 @@ class PosixEnv : public Env {
     *result = NULL;
     return Status::IOError(fname, strerror(errno));
   } else {
-#ifdef WIN32
+#ifdef _WIN32
     *result = new WinLogger(f);
 #else
     *result = new PosixLogger(f, &PosixEnv::gettid);

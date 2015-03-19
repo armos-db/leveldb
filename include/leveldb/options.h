@@ -5,6 +5,7 @@
 #ifndef STORAGE_LEVELDB_INCLUDE_OPTIONS_H_
 #define STORAGE_LEVELDB_INCLUDE_OPTIONS_H_
 
+#include "dllmain.h"
 #include <stddef.h>
 
 namespace leveldb {
@@ -28,7 +29,7 @@ enum CompressionType {
 };
 
 // Options to control the behavior of a database (passed to DB::Open)
-struct Options {
+struct LEVELDB_API Options {
   // -------------------
   // Parameters that affect behavior
 

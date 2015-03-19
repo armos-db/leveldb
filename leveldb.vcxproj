@@ -57,7 +57,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LEVELDB_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>.;./include</AdditionalIncludeDirectories>
-      <AdditionalOptions>-DLEVELDB_PLATFORM_WINDOWS -DOS_WIN %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-DLEVELDB_PLATFORM_WINDOWS %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4996;4244;4018;4800</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -76,7 +76,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LEVELDB_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>.;./include</AdditionalIncludeDirectories>
-      <AdditionalOptions>-DLEVELDB_PLATFORM_WINDOWS -DOS_WIN %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-DLEVELDB_PLATFORM_WINDOWS %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4996;4244;4018;4800</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -108,6 +108,7 @@
     <ClInclude Include="include\leveldb\cache.h" />
     <ClInclude Include="include\leveldb\comparator.h" />
     <ClInclude Include="include\leveldb\db.h" />
+    <ClInclude Include="include\leveldb\dllmain.h" />
     <ClInclude Include="include\leveldb\dumpfile.h" />
     <ClInclude Include="include\leveldb\env.h" />
     <ClInclude Include="include\leveldb\filter_policy.h" />
@@ -118,11 +119,9 @@
     <ClInclude Include="include\leveldb\table.h" />
     <ClInclude Include="include\leveldb\table_builder.h" />
     <ClInclude Include="include\leveldb\write_batch.h" />
-    <ClInclude Include="port\atomic_pointer.h" />
     <ClInclude Include="port\port.h" />
     <ClInclude Include="port\port_win.h" />
     <ClInclude Include="port\thread_annotations.h" />
-    <ClInclude Include="port\win\stdint.h" />
     <ClInclude Include="table\block.h" />
     <ClInclude Include="table\block_builder.h" />
     <ClInclude Include="table\filter_block.h" />
